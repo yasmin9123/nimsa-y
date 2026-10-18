@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="NIMSA-Y — an interactive model rocket design and simulation prototype." />
+  <title>NIMSA-Y | Rocket Design Simulator</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="nav">
+    <a class="brand" href="#top">NIMSA-Y</a>
+    <nav><a href="#simulator">Simulator</a><a href="#about">About</a></nav>
+    <a class="button small" href="#simulator">Launch Simulator</a>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">MODEL ROCKET DESIGN · SIMULATION · GUIDANCE</p>
+        <h1>Build smarter.<br><span>Simulate before launch.</span></h1>
+        <p class="lede">NIMSA-Y is an early prototype for designing model rockets, estimating flight performance, checking stability, and turning technical outputs into understandable recommendations.</p>
+        <div class="actions"><a class="button" href="#simulator">Open the simulator</a><a class="text-link" href="#about">See what NIMSA-Y is →</a></div>
+        <div class="stats"><div><strong>DESIGN</strong><span>change rocket geometry</span></div><div><strong>SIMULATE</strong><span>estimate flight</span></div><div><strong>IMPROVE</strong><span>get guidance</span></div></div>
+      </div>
+      <div class="hero-visual"><canvas id="heroCanvas" width="700" height="700" aria-label="Animated rocket visualization"></canvas></div>
+    </section>
+
+    <section class="sim-section" id="simulator">
+      <div class="section-head"><p class="eyebrow">INTERACTIVE MVP</p><h2>Rocket Simulator</h2><p>Adjust the design. NIMSA-Y recalculates a simplified performance estimate instantly.</p></div>
+      <div class="workspace">
+        <aside class="controls card">
+          <div class="control"><label>Rocket mass <output id="massOut">450 g</output></label><input id="mass" type="range" min="200" max="1200" step="10" value="450"></div>
+          <div class="control"><label>Body diameter <output id="diamOut">5.0 cm</output></label><input id="diam" type="range" min="3" max="10" step="0.1" value="5"></div>
+          <div class="control"><label>Body length <output id="lengthOut">75 cm</output></label><input id="length" type="range" min="40" max="140" step="1" value="75"></div>
+          <div class="control"><label>Motor impulse <output id="impulseOut">20 N·s</output></label><input id="impulse" type="range" min="5" max="80" step="1" value="20"></div>
+          <div class="control"><label>Fin span <output id="finOut">8.0 cm</output></label><input id="fin" type="range" min="3" max="18" step="0.5" value="8"></div>
+          <div class="control"><label>Launch angle <output id="angleOut">90°</output></label><input id="angle" type="range" min="80" max="90" step="1" value="90"></div>
+          <button id="reset" class="button full">Reset design</button>
+          <p class="fineprint">Prototype estimates only — not a substitute for certified simulation software, manufacturer instructions, or launch safety review.</p>
+        </aside>
+
+        <div class="design card">
+          <div class="card-title"><span>DESIGN VIEW</span><span id="statusPill" class="pill good">STABLE</span></div>
+          <canvas id="rocketCanvas" width="760" height="540" aria-label="Interactive rocket design preview"></canvas>
+        </div>
+
+        <div class="results card">
+          <div class="card-title"><span>FLIGHT ESTIMATE</span><span class="muted">v0.1</span></div>
+          <div class="metric"><span>Estimated apogee</span><strong id="altitude">—</strong></div>
+          <div class="metric"><span>Max velocity</span><strong id="velocity">—</strong></div>
+          <div class="metric"><span>Est. flight time</span><strong id="flightTime">—</strong></div>
+          <div class="metric"><span>Stability margin</span><strong id="stability">—</strong></div>
+          <canvas id="chartCanvas" width="620" height="260" aria-label="Estimated altitude over time graph"></canvas>
+          <div class="advisor"><div class="advisor-icon">✦</div><div><span>NIMSA-Y DESIGN REVIEW</span><p id="recommendation">—</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div><p class="eyebrow">THE IDEA</p><h2>One workflow from design to launch.</h2></div>
+      <div class="about-grid"><article><span>01</span><h3>Design</h3><p>Adjust geometry, mass, motors, and recovery choices in one project.</p></article><article><span>02</span><h3>Simulate</h3><p>Turn a rocket design into flight estimates, graphs, and stability indicators.</p></article><article><span>03</span><h3>Understand</h3><p>Translate technical outputs into plain-language explanations and next steps.</p></article><article><span>04</span><h3>Launch</h3><p>Future launch mode can combine saved designs, field conditions, and preflight checks.</p></article></div>
+    </section>
+  </main>
+
+  <footer><strong>NIMSA-Y</strong><span>Early-stage rocketry simulation prototype · 2026</span></footer>
+  <script src="script.js"></script>
+</body>
+</html>
